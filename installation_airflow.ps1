@@ -33,8 +33,5 @@ helm install $RELEASE_NAME apache-airflow/airflow `
     --set-string "images.airflow.tag=$IMAGE_TAG" `
     --debug
 
-#Apply kubernetes secrets
-kubectl apply -f k8/secrets/git-secrets.yaml
-
 # Port forward API server
 kubectl port-forward svc/$RELEASE_NAME-api-server 8080:8080 --namespace $NAMESPACE
