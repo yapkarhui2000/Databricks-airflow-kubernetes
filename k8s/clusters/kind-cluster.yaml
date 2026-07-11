@@ -1,0 +1,8 @@
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+  - role: control-plane
+  - role: worker
+    extraMounts:
+    - hostPath: "C:/Users/karhu/OneDrive/Desktop/Databricks-airflow3.0-kubernetes-main/tmp"
+      containerPath: /mnt/airflow-data/logs

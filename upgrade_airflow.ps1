@@ -12,7 +12,7 @@ kind load docker-image "$IMAGE_NAME`:$IMAGE_TAG"
 # Upgrade Airflow using Helm
 helm upgrade $RELEASE_NAME apache-airflow/airflow `
     --namespace $NAMESPACE `
-    -f chart/values-override.yaml `
+    -f chart/values-override-with-persistence.yaml `
     --set-string "images.airflow.tag=$IMAGE_TAG" `
     --debug
 
