@@ -6,6 +6,9 @@ jwtSecret: "48fe8dbd-b038-41ae-ba0e-b4e00fa60400"
 
 executor: "KubernetesExecutor"
 
+imagePullSecrets:
+  - name: ecr-secret
+
 #Images
 images:
   airflow:
