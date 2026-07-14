@@ -4,27 +4,8 @@ An end-to-end data platform that ingests the StackExchange data dump, orchestrat
 
 ## Architecture
 
-```
-archive.org (StackExchange .7z dump)
-        │
-        ▼
-Airflow Asset DAG (product_data_assets)
-  download → extract → upload
-        │
-        ▼
-   S3 (raw/Posts.xml, raw/Users.xml)
-        │
-        ▼
-Airflow DAG (databricks_workflows)
-  triggers on asset completion
-        │
-        ▼
-   Databricks Job (PySpark / Delta Lake)
-        │
-   ┌────┴────┬─────────┐
-   ▼         ▼         ▼
- Bronze    Silver     Gold
-(raw_*)   (stg_*)   (marts_*)
+<img width="559" height="536" alt="Screenshot 2026-07-14 at 3 41 20 PM" src="https://github.com/user-attachments/assets/d5cda3f4-013f-4db7-9a0d-177aebdba76a" />
+
 ```
 
 Airflow and Databricks are decoupled via **Airflow Assets**: the ingestion DAG only defines *what* data it produces (`posts_asset`, `user_asset`), and the Databricks trigger DAG is scheduled to run automatically once both assets are updated, rather than on a fixed cron.
