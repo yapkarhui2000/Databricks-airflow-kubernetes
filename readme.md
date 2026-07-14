@@ -10,7 +10,7 @@ Every day, an Airflow DAG grabs the latest StackExchange archive from archive.or
 <img width="559" height="536" alt="Screenshot 2026-07-14 at 3 41 20 PM" src="https://github.com/user-attachments/assets/9af51f14-3911-4c12-ab61-603c88ce52bd" />
 
 
-The Airflow → Databricks handoff uses **Airflow 3.0 Assets** instead of a cron schedule — the ingestion DAG just declares "I produce these two things," and the Databricks DAG is scheduled to fire once both show up. No guessing at timing, no arbitrary `schedule="0 6 * * *"` and hoping the upstream job finished in time.
+The Airflow → Databricks handoff uses **Airflow 3.0 Assets** instead of a cron schedule — the ingestion DAG just declares two things and the Databricks DAG is scheduled to fire once both show up. 
 
 ## Stack
 
